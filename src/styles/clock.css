@@ -1,0 +1,88 @@
+.clock-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  filter: drop-shadow(0 36px 78px rgba(0, 0, 0, 0.62));
+}
+
+.clock-artwork {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.clock-artwork::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 22%, rgba(255, 244, 212, 0.12), transparent 19%),
+    radial-gradient(circle at 58% 58%, transparent 56%, rgba(255, 255, 255, 0.08) 74%, transparent 76%);
+  mix-blend-mode: screen;
+  opacity: 0.72;
+}
+
+.clock-artwork img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  object-fit: contain;
+  transform: scale(1.035);
+}
+
+.clock-artwork-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #19324a 0 39%, #d6b26c 40% 43%, #101824 44% 72%, #8f6934 73% 100%);
+  box-shadow: inset 0 0 0 12px rgba(239, 208, 138, 0.35);
+}
+
+.mode-dayNight .clock-artwork img,
+.phase-day .clock-artwork img {
+  filter: brightness(1.06) saturate(1.06);
+}
+
+.mode-constellations .clock-artwork img,
+.visual-armillaryProjection .clock-artwork img,
+.visual-ceremony .clock-artwork img {
+  filter: brightness(0.92) saturate(1.14);
+}
+
+.armillary-canvas {
+  position: absolute;
+  z-index: 2;
+  width: min(104vh, 980px, 104vw);
+  aspect-ratio: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: scale(0.92);
+  filter: drop-shadow(0 0 22px rgba(212, 231, 238, 0.16));
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.armillary-canvas.active {
+  opacity: 0.92;
+  transform: scale(1);
+}
+
+@media (max-width: 780px) {
+  .intro {
+    position: fixed;
+    top: 14px;
+    left: 16px;
+    right: 16px;
+  }
+}

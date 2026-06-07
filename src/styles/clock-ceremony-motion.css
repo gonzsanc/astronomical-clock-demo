@@ -1,0 +1,81 @@
+.clock-ceremony-overlay.visible .ceremony-frame,
+.phase-rings .ceremony-rings,
+.phase-solar .ceremony-rings,
+.phase-moon .ceremony-rings,
+.phase-seasons .ceremony-rings,
+.phase-stars .ceremony-rings,
+.phase-armillary .ceremony-rings,
+.phase-bell .ceremony-rings,
+.phase-final .ceremony-rings,
+.phase-solar .ceremony-solar,
+.phase-moon .ceremony-solar,
+.phase-seasons .ceremony-solar,
+.phase-stars .ceremony-solar,
+.phase-armillary .ceremony-solar,
+.phase-bell .ceremony-solar,
+.phase-final .ceremony-solar,
+.phase-seasons .ceremony-seasonal,
+.phase-stars .ceremony-seasonal,
+.phase-armillary .ceremony-seasonal,
+.phase-bell .ceremony-seasonal,
+.phase-final .ceremony-seasonal,
+.phase-stars .ceremony-celestial,
+.phase-armillary .ceremony-celestial,
+.phase-bell .ceremony-celestial,
+.phase-final .ceremony-celestial,
+.phase-armillary .ceremony-armillary-hint,
+.phase-bell .ceremony-armillary-hint,
+.phase-final .ceremony-armillary-hint,
+.phase-bell .ceremony-bell-group,
+.phase-final .ceremony-bell-group {
+  opacity: 1;
+}
+
+.clock-ceremony-overlay.visible .ceremony-sweep {
+  animation: ceremony-draw 2s ease forwards;
+}
+
+.phase-rings .ceremony-orbit,
+.phase-rings .ceremony-gear-light,
+.phase-solar .ceremony-sun-arc,
+.phase-solar .ceremony-night-arc,
+.phase-seasons .season-link,
+.phase-stars .ceremony-star-line,
+.phase-armillary .ceremony-armillary-hint ellipse {
+  animation: ceremony-draw 1.45s ease forwards;
+}
+
+.phase-seasons .season-spark,
+.phase-stars .ceremony-star,
+.phase-armillary .ceremony-star,
+.phase-bell .ceremony-star,
+.phase-final .ceremony-star {
+  animation: ceremony-bloom 0.9s ease forwards;
+}
+
+.phase-bell .bell-halo,
+.phase-bell .bell-body,
+.phase-bell .bell-clapper,
+.phase-final .bell-halo,
+.phase-final .bell-body,
+.phase-final .bell-clapper {
+  animation: ceremony-bloom 1.05s ease forwards;
+}
+
+@keyframes ceremony-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ceremony-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

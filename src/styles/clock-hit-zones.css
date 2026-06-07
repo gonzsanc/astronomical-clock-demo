@@ -1,0 +1,48 @@
+.clock-hit-zones {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.clock-hit-zone {
+  position: absolute;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(239, 208, 138, 0.001);
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.clock-hit-zone:hover,
+.clock-hit-zone:focus-visible {
+  border-color: rgba(255, 232, 164, 0.68);
+  background: rgba(239, 208, 138, 0.1);
+  box-shadow: 0 0 18px rgba(239, 208, 138, 0.3);
+}
+
+.clock-hit-zone.reset-ready {
+  border-color: rgba(239, 208, 138, 0.78);
+  background: rgba(200, 155, 74, 0.16);
+  box-shadow: 0 0 24px rgba(239, 208, 138, 0.28);
+}
+
+.clock-hit-zones.debug .clock-hit-zone {
+  border-color: rgba(135, 216, 238, 0.72);
+  border-style: dashed;
+  background: rgba(54, 143, 184, 0.17);
+}
+
+.clock-hit-zones.debug .clock-hit-zone:hover,
+.clock-hit-zones.debug .clock-hit-zone:focus-visible {
+  border-color: rgba(255, 237, 181, 0.9);
+  background: rgba(239, 208, 138, 0.24);
+}

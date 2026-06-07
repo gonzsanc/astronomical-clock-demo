@@ -1,0 +1,72 @@
+.clock-overlay.mode-dayNight .draw-path,
+.clock-overlay.mode-moonPhase .draw-path,
+.clock-overlay.mode-seasons .draw-path,
+.clock-overlay.mode-constellations .draw-path,
+.clock-overlay.visual-armillaryProjection .draw-path,
+.clock-overlay.visual-resetting .draw-path {
+  animation: overlay-draw 1.35s ease forwards;
+}
+
+.delayed {
+  animation-delay: 0.24s;
+}
+
+.late {
+  animation-delay: 0.46s;
+}
+
+.day-node.active,
+.clock-overlay.mode-constellations .star-point,
+.clock-overlay.visual-armillaryProjection .rete-star {
+  animation: node-bloom 0.9s ease forwards;
+}
+
+.season-marker.active {
+  animation: marker-rise 0.85s ease forwards;
+}
+
+.clock-overlay.visual-armillaryProjection .rete-layer {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rete-emerge 1.1s ease forwards;
+}
+
+@keyframes overlay-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes node-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes marker-rise {
+  0% {
+    transform: scale(0.78);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rete-emerge {
+  0% {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

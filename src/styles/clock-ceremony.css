@@ -1,0 +1,147 @@
+.clock-ceremony-overlay {
+  position: absolute;
+  inset: -11%;
+  z-index: 3;
+  width: 122%;
+  height: 122%;
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.clock-ceremony-overlay.visible {
+  opacity: 1;
+}
+
+.ceremony-frame,
+.ceremony-rings,
+.ceremony-solar,
+.ceremony-seasonal,
+.ceremony-celestial,
+.ceremony-armillary-hint,
+.ceremony-bell-group {
+  opacity: 0;
+}
+
+.ceremony-sweep,
+.ceremony-orbit,
+.ceremony-gear-light,
+.ceremony-sun-arc,
+.ceremony-night-arc,
+.season-link,
+.ceremony-star-line,
+.ceremony-armillary-hint ellipse {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: url("#ceremonyGlow");
+}
+
+.ceremony-sweep {
+  stroke: rgba(241, 205, 127, 0.5);
+  stroke-width: 2.4;
+  stroke-dasharray: 1382;
+  stroke-dashoffset: 1382;
+}
+
+.sweep-inner {
+  stroke: rgba(215, 232, 238, 0.28);
+  stroke-width: 1.8;
+}
+
+.ceremony-orbit,
+.ceremony-armillary-hint ellipse {
+  stroke: rgba(223, 235, 238, 0.32);
+  stroke-width: 2;
+}
+
+.orbit-ecliptic {
+  stroke: rgba(239, 199, 106, 0.58);
+  stroke-width: 2.8;
+}
+
+.ceremony-gear-light,
+.ceremony-sun-arc,
+.ceremony-night-arc,
+.season-link,
+.ceremony-star-line {
+  stroke-dasharray: 960;
+  stroke-dashoffset: 960;
+}
+
+.ceremony-gear-light {
+  stroke: rgba(239, 205, 132, 0.26);
+  stroke-width: 1.8;
+}
+
+.ceremony-sun-arc {
+  stroke: rgba(255, 225, 134, 0.74);
+  stroke-width: 3;
+}
+
+.ceremony-night-arc,
+.ceremony-star-line {
+  stroke: rgba(198, 221, 232, 0.5);
+  stroke-width: 2.2;
+}
+
+.season-spark,
+.ceremony-star,
+.bell-clapper {
+  filter: url("#ceremonyGlow");
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.season-spark {
+  fill: rgba(236, 205, 126, 0.62);
+}
+
+.spring {
+  fill: rgba(183, 215, 140, 0.76);
+}
+
+.summer {
+  fill: rgba(255, 223, 115, 0.82);
+}
+
+.autumn {
+  fill: rgba(223, 139, 82, 0.82);
+}
+
+.winter {
+  fill: rgba(204, 228, 242, 0.82);
+}
+
+.ceremony-star {
+  fill: rgba(255, 241, 190, 0.9);
+}
+
+.bell-halo {
+  fill: rgba(238, 193, 93, 0.12);
+  stroke: rgba(255, 230, 160, 0.32);
+  stroke-width: 2;
+  filter: url("#ceremonyGlow");
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.bell-body {
+  fill: url("#ceremonyGold");
+  stroke: rgba(255, 239, 179, 0.88);
+  stroke-width: 3;
+  filter: url("#ceremonyGlow");
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.bell-clapper {
+  fill: rgba(36, 20, 8, 0.92);
+  stroke: rgba(255, 234, 162, 0.72);
+  stroke-width: 2;
+}

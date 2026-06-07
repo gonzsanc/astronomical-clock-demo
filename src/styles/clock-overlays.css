@@ -1,0 +1,116 @@
+.clock-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  background: transparent;
+  fill: none;
+  opacity: 1;
+}
+
+.day-layer,
+.moon-layer,
+.season-layer,
+.constellation-layer,
+.rete-layer,
+.reset-layer {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.clock-overlay.mode-dayNight .day-layer,
+.clock-overlay.mode-moonPhase .moon-layer,
+.clock-overlay.mode-seasons .season-layer,
+.clock-overlay.mode-constellations .constellation-layer,
+.clock-overlay.visual-seasonTransition .season-layer,
+.clock-overlay.visual-armillaryProjection .constellation-layer,
+.clock-overlay.visual-armillaryProjection .rete-layer,
+.clock-overlay.visual-resetting .reset-layer {
+  opacity: 1;
+}
+
+.overlay-line,
+.overlay-ring {
+  fill: none;
+  stroke: rgba(242, 205, 133, 0.78);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  filter: url("#overlayGlow");
+}
+
+.overlay-ring {
+  stroke-width: 2.2;
+  opacity: 0.56;
+}
+
+.draw-path {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+
+.solar-arc {
+  stroke: rgba(255, 207, 107, 0.86);
+  stroke-width: 4;
+}
+
+.horizon-line,
+.solar-meridian {
+  stroke: rgba(214, 230, 236, 0.38);
+  stroke-width: 2;
+}
+
+.day-node {
+  fill: rgba(240, 206, 135, 0.14);
+  stroke: rgba(240, 206, 135, 0.24);
+  stroke-width: 3;
+  transition:
+    fill 0.4s ease,
+    stroke 0.4s ease,
+    r 0.4s ease;
+}
+
+.day-node.active {
+  r: 20px;
+  fill: rgba(255, 229, 150, 0.72);
+  stroke: rgba(255, 248, 206, 0.92);
+}
+
+.clock-overlay.phase-day .solar-arc {
+  stroke: rgba(255, 236, 168, 0.9);
+}
+
+.clock-overlay.phase-dusk .solar-arc {
+  stroke: rgba(228, 143, 83, 0.9);
+}
+
+.clock-overlay.phase-night .solar-arc,
+.clock-overlay.phase-night .horizon-line {
+  stroke: rgba(167, 201, 223, 0.72);
+}
+
+.moon-halo {
+  fill: rgba(198, 222, 229, 0.1);
+  stroke: rgba(224, 238, 239, 0.24);
+  stroke-width: 2;
+}
+
+.moon-disc {
+  fill: url("#moonLight");
+  stroke: rgba(255, 246, 210, 0.72);
+  stroke-width: 2.5;
+  filter: url("#overlayGlow");
+}
+
+.moon-shadow {
+  fill: rgba(8, 16, 25, 0.92);
+  transition: opacity 0.45s ease;
+}
+
+.moon-orbit {
+  stroke: rgba(205, 226, 230, 0.55);
+  stroke-width: 2;
+}

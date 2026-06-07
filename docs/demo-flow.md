@@ -20,6 +20,7 @@ Use this sequence to show how Codex developed the project.
 - Domain rules are implemented before visual complexity.
 - UI is built as one screen centered on the clock.
 - Three.js is isolated to the Rete Celeste Armillary Projection.
+- Visual quality is improved in cuts: real clock artwork, real-time hands, richer Rete projection and a separate ceremonial overlay.
 
 ## 4. Validation
 

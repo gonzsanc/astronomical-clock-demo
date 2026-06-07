@@ -11,7 +11,6 @@ export function createInitialState(): ClockState {
     dayPhase: 'dawn',
     moonPhase: 'firstQuarter',
     season: 'spring',
-    panelOpen: false,
     soundState: 'muted',
     motionPreference: 'full',
     message: copy.loading,
@@ -56,10 +55,6 @@ export function reduceClockState(state: ClockState, command: ClockCommand): Tran
       return { state: startProjection(state), effect: 'projection' };
     case 'startCeremony':
       return { state: startCeremony(state), effect: 'ceremony' };
-    case 'openPanel':
-      return { state: { ...state, panelOpen: true, message: 'Leer el mecanismo.' } };
-    case 'closePanel':
-      return { state: { ...state, panelOpen: false } };
     case 'toggleSound':
       return { state: { ...state, soundState: state.soundState === 'muted' ? 'enabled' : 'muted' }, effect: 'sound' };
     case 'setMotion':
@@ -78,7 +73,7 @@ function startProjection(state: ClockState): ClockState {
 }
 
 function startCeremony(state: ClockState): ClockState {
-  return { ...state, mode: 'ceremony', visualState: 'ceremony', panelOpen: false, isBusy: true, message: copy.ceremonyFinal };
+  return { ...state, mode: 'ceremony', visualState: 'ceremony', isBusy: true, message: copy.ceremonyFinal };
 }
 
 function nextDayPhase(current: ClockState['dayPhase']): ClockState['dayPhase'] {

@@ -1,23 +1,25 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
   import { playClockSound } from '../audio/clockAudio';
-  import { copy, modeLabels, panelCopy } from '../domain/copy';
+  import { ceremonyVisualPhase } from '../domain/ceremony';
+  import { copy } from '../domain/copy';
   import { createInitialState } from '../domain/clockState';
   import { timings } from '../domain/timings';
   import type { ClockState, InteractionAction, Season } from '../domain/types';
   import ArmillaryProjection from '../features/rete-celeste/ArmillaryProjection.svelte';
   import AstronomicalClock from '../features/clock/AstronomicalClock.svelte';
-  import ControlDock from '../ui/ControlDock.svelte';
-  import SidePanel from '../ui/SidePanel.svelte';
   import { createClockViewModel, resolveDemoSpeed, type ClockViewModel } from './useClockViewModel';
 
   let state: ClockState = createInitialState();
   let viewModel: ClockViewModel | undefined;
   let cleanup = () => {};
   let loadingTimer = 0;
+  let showHitZones = false;
 
   onMount(() => {
     const speed = resolveDemoSpeed(window.location);
+    const params = new URLSearchParams(window.location.search);
+    showHitZones = params.has('hitZones') || params.has('debugHitZones');
     viewModel = createClockViewModel(speed);
     cleanup = viewModel.subscribe((next) => (state = next));
     loadingTimer = window.setTimeout(() => act('ready'), timings.loading * speed);
@@ -54,13 +56,9 @@
     playClockSound('selectSeason', currentSound);
   }
 
-  function toggleMotion(): void {
-    if (!viewModel) return;
-    const motionPreference = state.motionPreference === 'full' ? 'reduced' : 'full';
-    viewModel.dispatch({ action: 'setMotion', motionPreference });
-  }
-
-  $: panelText = panelCopy[state.mode];
+  $: showFinalInscription = state.visualState === 'final';
+  $: ceremonyProjectionActive =
+    state.visualState === 'ceremony' && ceremonyVisualPhase(state.ceremonyStep) === 'armillary';
 </script>
 
 <svelte:head>
@@ -85,39 +83,25 @@
       </div>
     {/if}
 
-    <AstronomicalClock
-      {state}
-      onAction={act}
-      onSeason={selectSeason}
-    />
-
-    {#if state.visualState === 'armillaryProjection' || state.visualState === 'ceremony'}
-      <ArmillaryProjection
-        active={state.visualState === 'armillaryProjection' || state.ceremonyStep.includes('Proyección')}
-        reducedMotion={state.motionPreference === 'reduced'}
+    <div class="clock-placement">
+      <AstronomicalClock
+        {state}
+        {showHitZones}
+        onAction={act}
+        onSeason={selectSeason}
       />
-    {/if}
 
-    <p class="status-line" data-testid="status-line">{state.message}</p>
-    {#if state.ceremonyStep}
-      <p class="ceremony-step" data-testid="ceremony-step">{state.ceremonyStep}</p>
+      {#if state.visualState === 'armillaryProjection' || state.visualState === 'ceremony'}
+        <ArmillaryProjection
+          active={state.visualState === 'armillaryProjection' || ceremonyProjectionActive}
+          reducedMotion={state.motionPreference === 'reduced'}
+        />
+      {/if}
+    </div>
+
+    <p class="sr-only" aria-live="polite">{state.message}</p>
+    {#if showFinalInscription}
+      <p class="final-inscription" data-testid="final-inscription">{copy.ceremonyFinal}</p>
     {/if}
   </section>
-
-  <SidePanel
-    open={state.panelOpen}
-    title={modeLabels[state.mode]}
-    text={panelText}
-    onClose={() => act('closePanel')}
-  />
-
-  <ControlDock
-    soundState={state.soundState}
-    motionPreference={state.motionPreference}
-    finalState={state.visualState === 'final'}
-    onHelp={() => act('openPanel')}
-    onSound={() => act('toggleSound')}
-    onMotion={toggleMotion}
-    onReset={() => act('reset')}
-  />
 </main>

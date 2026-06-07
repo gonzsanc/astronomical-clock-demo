@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { ceremonyVisualPhase } from '../../src/domain/ceremony';
 import { copy } from '../../src/domain/copy';
 import { ceremonyDuration, projectionDuration, timings } from '../../src/domain/timings';
 import { canDispatch, createInitialState, reduceClockState } from '../../src/domain/clockState';
@@ -39,6 +40,18 @@ describe('clock state machine', () => {
     expect(ceremonyDuration('full')).toBe(32_000);
     expect(ceremonyDuration('reduced')).toBe(22_000);
     expect(timings.reset).toBe(2_200);
+  });
+
+  it('maps ceremony labels to stable visual phases', () => {
+    expect(ceremonyVisualPhase('Preparacion')).toBe('opening');
+    expect(ceremonyVisualPhase('Encendido de anillos')).toBe('rings');
+    expect(ceremonyVisualPhase('Dia y noche')).toBe('solar');
+    expect(ceremonyVisualPhase('Fase lunar')).toBe('moon');
+    expect(ceremonyVisualPhase('Cuatro estaciones')).toBe('seasons');
+    expect(ceremonyVisualPhase('Constelaciones')).toBe('stars');
+    expect(ceremonyVisualPhase('Proyeccion Armilar ceremonial')).toBe('armillary');
+    expect(ceremonyVisualPhase('Campana final')).toBe('bell');
+    expect(ceremonyVisualPhase('Texto final')).toBe('final');
   });
 
   it('resets to origin through a controlled resetting state', () => {

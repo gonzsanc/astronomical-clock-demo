@@ -26,8 +26,6 @@ export type InteractionAction =
   | 'toggleConstellations'
   | 'activateRete'
   | 'startCeremony'
-  | 'openPanel'
-  | 'closePanel'
   | 'toggleSound'
   | 'setMotion'
   | 'reset';
@@ -52,7 +50,6 @@ export interface ClockState {
   dayPhase: DayPhase;
   moonPhase: MoonPhase;
   season: Season;
-  panelOpen: boolean;
   soundState: SoundState;
   motionPreference: MotionPreference;
   message: string;

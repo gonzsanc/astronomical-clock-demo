@@ -1,0 +1,77 @@
+.season-thread {
+  stroke: rgba(234, 205, 139, 0.46);
+  stroke-width: 2;
+}
+
+.season-marker {
+  opacity: 0.2;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.season-marker circle {
+  fill: rgba(10, 16, 22, 0.12);
+  stroke: rgba(239, 208, 138, 0.32);
+  stroke-width: 2.5;
+}
+
+.season-marker path {
+  fill: none;
+  stroke: rgba(236, 221, 170, 0.58);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 5;
+}
+
+.season-marker.active {
+  opacity: 1;
+}
+
+.season-spring.active path {
+  stroke: rgba(193, 222, 148, 0.9);
+}
+
+.season-summer.active path {
+  stroke: rgba(255, 224, 118, 0.92);
+}
+
+.season-autumn.active path {
+  stroke: rgba(221, 143, 84, 0.94);
+}
+
+.season-winter.active path {
+  stroke: rgba(211, 231, 246, 0.94);
+}
+
+.star-line,
+.rete-ecliptic,
+.rete-spine {
+  stroke: rgba(219, 235, 240, 0.68);
+  stroke-width: 2.2;
+}
+
+.star-point,
+.rete-star {
+  fill: rgba(255, 244, 205, 0.86);
+  filter: url("#overlayGlow");
+}
+
+.rete-ring {
+  stroke: rgba(241, 200, 113, 0.6);
+}
+
+.outer-armillary {
+  stroke: rgba(213, 231, 236, 0.34);
+  stroke-width: 1.8;
+}
+
+.rete-star {
+  fill: rgba(255, 210, 126, 0.9);
+}
+
+.reset-ring,
+.reset-cross {
+  stroke: rgba(239, 208, 138, 0.72);
+  stroke-width: 3;
+  filter: url("#overlayGlow");
+}

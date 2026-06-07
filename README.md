@@ -11,6 +11,7 @@ This project is a portable static web app for showing a team how Codex can move 
 - Vite
 - Three.js
 - CSS/SVG
+- Optimized bitmap asset for the main clock artwork
 - Vitest
 - Playwright
 
@@ -73,7 +74,6 @@ src/
   domain/
   features/clock/
   features/rete-celeste/
-  ui/
   audio/
   styles/
 tests/
@@ -86,4 +86,9 @@ docs/
 - The app has no backend, database or live AI dependency.
 - Three.js is dynamically loaded only for the Armillary Projection.
 - The core rules live in pure TypeScript under `src/domain`.
+- The main clock artwork is served from `public/assets/clock/reloj_astronomico_base.webp`.
+- SVG clock hands are layered above the artwork in `src/features/clock/ClockHands.svelte` and show the browser's real local time, updating by minute.
+- SVG interaction overlays live in `src/features/clock/ClockInteractionOverlay.svelte`; interactions change the clock visually instead of showing a constant status line or bottom control dock.
+- Calibrated interaction zones live in `src/features/clock/ClockHitZones.svelte`; open `?hitZones=1` locally to inspect the debug map.
+- The Rete Celeste projection is a dedicated Three.js dome, and the ceremony has its own SVG overlay in `ClockCeremonyOverlay.svelte`.
 - The public docs are in `docs/`; governed project documentation lives outside this repo under `.org/Reloj_Astronomico`.

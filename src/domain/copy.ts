@@ -1,4 +1,4 @@
-import type { ClockMode, MoonPhase } from './types';
+import type { MoonPhase } from './types';
 
 export const copy = {
   title: 'Reloj Astronómico Interactivo',
@@ -13,29 +13,8 @@ export const copy = {
   ceremonyAction: 'Iniciar la ceremonia del tiempo.',
   ceremonyFinal: 'El tiempo no pasa. Se revela.',
   reset: 'El mecanismo vuelve al origen.',
-  help: 'Toca los anillos, las ventanas y la campana. Cada pieza tiene una respuesta cerrada.',
   resourceError: 'El mecanismo no ha cargado completo. Recarga la experiencia.'
 } as const;
-
-export const panelCopy: Record<ClockMode, string> = {
-  idle: copy.help,
-  dayNight: 'Gira la aguja para ver cómo el reloj traduce las horas en luz, sombra y temperatura.',
-  moonPhase: 'La ventana lunar muestra un ciclo lento, integrado en el mecanismo como una complicación de relojería.',
-  seasons: 'Cada estación modifica el metal, el aire y los pequeños signos del año.',
-  constellations: 'La Rete Celeste guarda una lectura plana del cielo. Al tocarla, el instrumento despliega su cúpula oculta.',
-  ceremony: 'La ceremonia sincroniza anillos, luna, estaciones, constelaciones y campana final.',
-  final: copy.ceremonyFinal
-};
-
-export const modeLabels: Record<ClockMode, string> = {
-  idle: 'Leer el mecanismo',
-  dayNight: 'Día y noche',
-  moonPhase: 'Fases lunares',
-  seasons: 'Estaciones',
-  constellations: 'Constelaciones',
-  ceremony: 'Ceremonia del tiempo',
-  final: 'Final'
-};
 
 export const moonPhaseLabels: Record<MoonPhase, string> = {
   new: 'Luna nueva',

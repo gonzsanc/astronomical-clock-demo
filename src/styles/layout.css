@@ -1,0 +1,230 @@
+.experience {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(200, 155, 74, 0.13), transparent 32rem),
+    radial-gradient(circle at 50% 60%, rgba(41, 61, 82, 0.42), transparent 46rem),
+    linear-gradient(140deg, #05080d, #0a1320 46%, #020306);
+}
+
+.experience::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -2;
+  background-image:
+    radial-gradient(circle, rgba(255, 244, 214, 0.16) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(198, 208, 215, 0.1) 0 1px, transparent 1.3px);
+  background-position:
+    12px 20px,
+    90px 64px;
+  background-size:
+    180px 180px,
+    260px 260px;
+  opacity: 0.45;
+}
+
+.mode-dayNight {
+  background:
+    radial-gradient(circle at 50% 46%, rgba(239, 208, 138, 0.25), transparent 28rem),
+    linear-gradient(140deg, #09131d, #243441 52%, #120b07);
+}
+
+.phase-day {
+  background:
+    radial-gradient(circle at 50% 43%, rgba(248, 213, 143, 0.38), transparent 30rem),
+    linear-gradient(140deg, #172633, #415463 52%, #1b130c);
+}
+
+.phase-dusk,
+.season-autumn {
+  --brass: #d29a58;
+  --brass-soft: #ffe0a0;
+}
+
+.season-spring {
+  --brass: #b5b874;
+  --brass-soft: #e5e7a5;
+}
+
+.season-winter {
+  --brass: #b9c7d7;
+  --brass-soft: #f0f6ff;
+}
+
+.stage {
+  width: min(100vw, 1180px);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  padding: clamp(18px, 3vw, 40px);
+}
+
+.intro {
+  position: absolute;
+  top: clamp(18px, 4vh, 42px);
+  left: clamp(20px, 5vw, 68px);
+  max-width: 420px;
+  z-index: 3;
+}
+
+.intro h1 {
+  margin: 0 0 0.45rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.55rem, 2.6vw, 2.55rem);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.intro p,
+.status-line,
+.ceremony-step {
+  margin: 0;
+  color: rgba(246, 237, 215, 0.82);
+}
+
+.status-line {
+  position: absolute;
+  bottom: clamp(78px, 8vh, 92px);
+  left: 50%;
+  width: min(88vw, 680px);
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 1rem;
+  z-index: 5;
+}
+
+.ceremony-step {
+  position: absolute;
+  bottom: clamp(48px, 5vh, 60px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--brass-soft);
+  font-size: 0.95rem;
+  z-index: 5;
+}
+
+.loader {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 18px;
+  z-index: 20;
+  background: rgba(4, 7, 12, 0.86);
+}
+
+.loader span {
+  width: 74px;
+  height: 74px;
+  border: 1px solid rgba(239, 208, 138, 0.35);
+  border-top-color: var(--brass-soft);
+  border-radius: 50%;
+  animation: slow-spin 2.4s linear infinite;
+}
+
+.side-panel {
+  position: fixed;
+  top: 50%;
+  right: 28px;
+  z-index: 12;
+  width: min(320px, calc(100vw - 48px));
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  transform: translate(120%, -50%);
+  opacity: 0;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.side-panel.open {
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+
+.panel-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid transparent;
+  color: var(--brass-soft);
+  background: transparent;
+  cursor: pointer;
+}
+
+.panel-kicker {
+  margin: 0 0 8px;
+  color: var(--brass-soft);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.side-panel h2 {
+  margin: 0 0 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+.side-panel p {
+  line-height: 1.55;
+}
+
+.control-dock {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 14;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.control-dock button {
+  min-height: 44px;
+  border: 1px solid rgba(239, 208, 138, 0.36);
+  color: #f8ebcf;
+  background: rgba(9, 14, 21, 0.72);
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.control-dock .featured {
+  border-color: var(--brass-soft);
+  background: rgba(200, 155, 74, 0.2);
+}
+
+@keyframes slow-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (max-width: 780px) {
+  .status-line {
+    bottom: 132px;
+  }
+
+  .ceremony-step {
+    bottom: 106px;
+  }
+
+  .control-dock {
+    left: 12px;
+    right: 12px;
+    bottom: 18px;
+    justify-content: center;
+  }
+}

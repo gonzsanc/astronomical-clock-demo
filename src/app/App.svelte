@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
   import { playClockSound } from '../audio/clockAudio';
-  import { copy, panelCopy } from '../domain/copy';
+  import { copy, modeLabels, panelCopy } from '../domain/copy';
   import { createInitialState } from '../domain/clockState';
   import { timings } from '../domain/timings';
   import type { ClockState, InteractionAction, Season } from '../domain/types';
@@ -106,7 +106,7 @@
 
   <SidePanel
     open={state.panelOpen}
-    title={state.mode === 'idle' ? 'Leer el mecanismo' : state.mode}
+    title={modeLabels[state.mode]}
     text={panelText}
     onClose={() => act('closePanel')}
   />

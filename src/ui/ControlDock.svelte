@@ -12,10 +12,22 @@
 
 <nav class="control-dock" aria-label="Controles secundarios">
   <button type="button" aria-label="Abrir ayuda" title="Ayuda" onclick={onHelp}>Ayuda</button>
-  <button type="button" aria-label="Alternar sonido" title="Sonido" onclick={onSound}>
+  <button
+    type="button"
+    aria-label="Alternar sonido"
+    aria-pressed={soundState === 'enabled'}
+    title="Sonido"
+    onclick={onSound}
+  >
     {soundState === 'enabled' ? 'Sonido activo' : 'Silencio'}
   </button>
-  <button type="button" aria-label="Alternar movimiento reducido" title="Movimiento" onclick={onMotion}>
+  <button
+    type="button"
+    aria-label="Alternar movimiento reducido"
+    aria-pressed={motionPreference === 'reduced'}
+    title="Movimiento"
+    onclick={onMotion}
+  >
     {motionPreference === 'reduced' ? 'Movimiento reducido' : 'Movimiento completo'}
   </button>
   <button class:featured={finalState} type="button" aria-label="Reiniciar mecanismo" onclick={onReset}>

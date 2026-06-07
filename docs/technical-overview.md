@@ -9,6 +9,7 @@ This is a static one-screen web demo. It exists to show Codex-assisted implement
 The app is a modular frontend:
 
 - `src/domain` contains pure TypeScript state, timings, copy and ceremony steps.
+- Visible labels and microcopy live in `src/domain/copy.ts`, so UI panels do not expose internal state IDs.
 - `src/app` owns the local view-model and timers.
 - `src/features/clock` renders the SVG/CSS clock and accessible interaction zones.
 - `src/features/rete-celeste` dynamically imports Three.js for the Armillary Projection.

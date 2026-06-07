@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tooltipCopy } from '../../domain/copy';
+  import { moonPhaseLabels, tooltipCopy } from '../../domain/copy';
   import type { ClockState, DayPhase, InteractionAction, Season } from '../../domain/types';
 
   export let state: ClockState;
@@ -19,7 +19,7 @@
     winter: 'Invierno'
   };
 
-  $: moonLabel = `Fase lunar: ${state.moonPhase}`;
+  $: moonLabel = `Fase lunar: ${moonPhaseLabels[state.moonPhase]}`;
   $: seasonLabel = seasonLabels[state.season];
 
   function handRotation(phase: DayPhase): number {

@@ -48,6 +48,12 @@ All checks together:
 npm run quality
 ```
 
+Preview the built static app:
+
+```bash
+npm run preview
+```
+
 ## Deploy
 
 Netlify settings:

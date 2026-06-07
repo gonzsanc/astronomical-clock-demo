@@ -18,6 +18,9 @@ test.describe('astronomical clock demo', () => {
 
     await page.getByTestId('control-constellations').click();
     await expect(page.getByTestId('status-line')).toContainText('Las estrellas encuentran');
+
+    await page.getByRole('button', { name: 'Abrir ayuda' }).click();
+    await expect(page.getByTestId('side-panel')).toContainText('Constelaciones');
   });
 
   test('opens and closes the help panel', async ({ page }) => {
